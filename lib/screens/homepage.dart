@@ -20,7 +20,8 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 60, 170, 201),
+        backgroundColor: Colors.black,
+        // backgroundColor: Color.fromARGB(255, 60, 170, 201),
         centerTitle: true,
         title: TextFormField(
   controller: Homepageconter.searchcontroller,

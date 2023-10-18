@@ -43,11 +43,11 @@ Widget additionalInformation(
                     Row(
                       children: [
                         Icon(
-                          Icons.cloud_off_outlined,
+                          Icons.cloud_download_rounded,
                           color: Colors.white,
                         ),
                         Text(
-                          " Pressure ",
+                          "  Pressure ",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
