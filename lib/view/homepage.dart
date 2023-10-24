@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/controller/homepagecontroller.dart';
-import 'package:weather/screens/items.dart';
+import 'package:weather/view/items.dart';
 import 'package:weather/model/wether_model.dart';
 import 'package:weather/services/weather_api.dart';
-import 'package:weather/screens/subcontainer.dart';
+import 'package:weather/view/subcontainer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);

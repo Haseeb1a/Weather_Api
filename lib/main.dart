@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/controller/homepagecontroller.dart';
-import 'package:weather/screens/homepage.dart';
-import 'package:weather/screens/subcontainer.dart';
+import 'package:weather/view/homepage.dart';
+import 'package:weather/view/subcontainer.dart';
 
 void main() {
   runApp(const MyApp());
