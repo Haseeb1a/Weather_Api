@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/controller/homepagecontroller.dart';
-import 'package:weather/view/homepage.dart';
-import 'package:weather/view/subcontainer.dart';
+import 'package:weather/views/homepage/homepage.dart';
+import 'package:weather/views/widget/subcontainer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
+            
           ),
           home: MyHomePage()),
     );

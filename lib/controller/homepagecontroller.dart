@@ -4,12 +4,13 @@ import '../model/wether_model.dart';
 import '../services/weather_api.dart';
 
 class Homepagecontroller extends ChangeNotifier {
-  WeatherApiclient client = WeatherApiclient();
+  //WeatherApiclient client = WeatherApiclient();
   Weather? data;
   String searched = "london";
   final TextEditingController searchcontroller = TextEditingController();
   Future<void> getData() async {
-    data = await client.getCurrentWeather(searched);
+    
+    data = await WeatherApiclient ().getCurrentWeather(searched);
 
     //  notifyListeners();
   }
@@ -24,6 +25,8 @@ class Homepagecontroller extends ChangeNotifier {
   }
 
   clearsearch() {
+
     searchcontroller.clear();
+    
   }
 }

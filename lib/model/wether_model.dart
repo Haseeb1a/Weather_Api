@@ -13,6 +13,7 @@ class Weather {
       this.feels_like,
       this.pressure});
 
+  
   Weather.formJson(Map<String, dynamic> json) {
    cityName = json["name"];
    temp = json["main"]["temp"];
