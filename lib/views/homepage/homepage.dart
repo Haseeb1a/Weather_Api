@@ -57,12 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: Color.fromARGB(255, 62, 86, 98),
       appBar: AppBar(
         
         elevation: 0,
         // backgroundColor: Colors.black,
-        backgroundColor:Colors.black,
+        backgroundColor: Color.fromARGB(255, 74, 137, 166),
         centerTitle: true,
         title: TextFormField(
           controller: homepageconter.searchcontroller,
@@ -96,70 +96,76 @@ class _MyHomePageState extends State<MyHomePage> {
                   ))),
         ),
       ),
-      body: FutureBuilder(
-        future: homepageconter.getData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 8,left: 8,right:8,top: 8 ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 470,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(25)
-                    
-                      ),
-                      gradient: LinearGradient(
-                        colors: [Color.fromARGB(255, 255, 255, 255), Colors.blue],
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            currentWeather(
-                                // Icons.wb_sunny_rounded,
-                                "${homepageconter.data!.temp}",
-                                "${homepageconter.data!.cityName}"),
-                            const SizedBox(
-                              height: 40,
-                            ),
-                            const Text(
-                              "Additional Information",
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  color: Color.fromARGB(255, 252, 255, 73),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+      body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/weather12.png'), fit: BoxFit.cover)),
+        child: FutureBuilder(
+          future: homepageconter.getData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 8,left: 8,right:8,top: 8 ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 470,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25)
+                      
                         ),
-                      ],
+                        
+                        // gradient: LinearGradient(
+                        //   colors: [Color.fromARGB(255, 92, 121, 132), Color.fromARGB(255, 255, 255, 255)],
+                        // ),
+                      ),
+                      child: Column(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              currentWeather(
+                                  // Icons.wb_sunny_rounded,
+                                  "${homepageconter.data!.temp}",
+                                  "${homepageconter.data!.cityName}"),
+                              const SizedBox(
+                                height: 40,
+                              ),
+                              const Text(
+                                "Additional Information",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Color.fromARGB(255, 252, 255, 73),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Card(
-                    // elevation: 4,
-            
-                    color: Colors.black,
-                    child: additionalInformation(
-                        "${homepageconter.data!.wind}",
-                        "${homepageconter.data!.humidity}",
-                        "${homepageconter.data!.pressure}",
-                        "${homepageconter.data!.feels_like}"),
-                  ),
-                  SizedBox(height: 20,)
-                ],
-              ),
-            );
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return Container();
-        },
+                    Card(
+                      // elevation: 4,
+              
+                      color: Colors.black,
+                      child: additionalInformation(
+                          "${homepageconter.data!.wind}",
+                          "${homepageconter.data!.humidity}",
+                          "${homepageconter.data!.pressure}",
+                          "${homepageconter.data!.feels_like}"),
+                    ),
+                    SizedBox(height: 20,)
+                  ],
+                ),
+              );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return Container();
+          },
+        ),
       ),
     );
   }

@@ -8,8 +8,8 @@ Widget currentWeather( String temp, String location) {
       children: [
         SizedBox(height: 10,),
 Container(
-  width: 200, // Set the desired width for your container
-  height: 200, // Set the desired height for your container
+  width: 180, // Set the desired width for your container
+  height: 180, // Set the desired height for your container
   child: ClipRRect(
     borderRadius: BorderRadius.all(
     Radius.circular(50)
@@ -24,7 +24,7 @@ Container(
       SizedBox(height: 10.0,),
       Text("$temp °C",style: TextStyle(fontSize: 46,color: Colors.white),),
        SizedBox(height: 10.0,),
-      Text("$location",style: TextStyle(fontSize: 46,fontWeight: FontWeight.bold),),     
+      Text("$location",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),     
       ],
     ),
   );

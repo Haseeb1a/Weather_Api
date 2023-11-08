@@ -9,8 +9,9 @@ class Homepagecontroller extends ChangeNotifier {
   String searched = "london";
   final TextEditingController searchcontroller = TextEditingController();
   Future<void> getData() async {
-    
-    data = await WeatherApiclient ().getCurrentWeather(searched);
+    print(searched);
+
+    data = await WeatherApiclient().getCurrentWeather(searched);
 
     //  notifyListeners();
   }
@@ -25,8 +26,6 @@ class Homepagecontroller extends ChangeNotifier {
   }
 
   clearsearch() {
-
     searchcontroller.clear();
-    
   }
 }

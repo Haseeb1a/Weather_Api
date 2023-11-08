@@ -5,11 +5,17 @@ Widget additionalInformation(
   final style = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
-    color: Colors.white,
+    color: Colors.yellow,
   );
   return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      gradient: LinearGradient(
+                          colors: [Color.fromARGB(255, 16, 59, 94), Color.fromARGB(255, 164, 192, 215)],
+                        ),
+    ),
     width: double.infinity,
-    padding: const EdgeInsets.all(18),
+    padding: const EdgeInsets.all(20),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
