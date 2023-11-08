@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weather/controller/connectivity_controler.dart';
 import 'package:weather/controller/homepagecontroller.dart';
 import 'package:weather/views/homepage/homepage.dart';
 import 'package:weather/views/widget/subcontainer.dart';
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => Homepagecontroller(),)
+        ChangeNotifierProvider(create: (context) => Homepagecontroller(),),
+              ChangeNotifierProvider(
+          create: (context) => CheckconnectivityProvider(),
+        )
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

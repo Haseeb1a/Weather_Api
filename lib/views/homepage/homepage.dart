@@ -9,49 +9,18 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weather/controller/connectivity_controler.dart';
 import 'package:weather/controller/homepagecontroller.dart';
 import 'package:weather/views/widget/items.dart';
 import 'package:weather/views/widget/subcontainer.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  late StreamSubscription subscription;
-  var isDeviceConnected = false;
-  bool isAlertSet = false;
-
-  // WeatherApiclient client = WeatherApiclient();
-  @override
-  void initState() {
-    getconnectivity();
-    // TODO: implement initState
-    super.initState();
-  }
-
-  getconnectivity() =>
-      subscription = Connectivity().onConnectivityChanged.listen(
-        (ConnectivityResult result) async {
-          isDeviceConnected = await InternetConnectionChecker().hasConnection;
-          if (!isDeviceConnected && isAlertSet == false) {
-            ShowDialogBox();
-            setState(() => isAlertSet = true);
-          }
-        },
-      );
-  @override
-  void dispose() {
-    subscription.cancel();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    //WeatherApiclient client = WeatherApiclient();
+    Provider.of<CheckconnectivityProvider>(context, listen: false)
+        .getInternetConnectivity(context);
     final homepageconter = Provider.of<Homepagecontroller>(
       context,
     );
@@ -59,7 +28,6 @@ class _MyHomePageState extends State<MyHomePage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromARGB(255, 62, 86, 98),
       appBar: AppBar(
-        
         elevation: 0,
         // backgroundColor: Colors.black,
         backgroundColor: Color.fromARGB(255, 74, 137, 166),
@@ -97,15 +65,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/weather12.png'), fit: BoxFit.cover)),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/weather12.png'), fit: BoxFit.cover)),
         child: FutureBuilder(
           future: homepageconter.getData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               return Padding(
-                padding: const EdgeInsets.only(bottom: 8,left: 8,right:8,top: 8 ),
+                padding:
+                    const EdgeInsets.only(bottom: 8, left: 8, right: 8, top: 8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -113,14 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: double.infinity,
                       height: 470,
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(25)
-                      
-                        ),
-                        
-                        // gradient: LinearGradient(
-                        //   colors: [Color.fromARGB(255, 92, 121, 132), Color.fromARGB(255, 255, 255, 255)],
-                        // ),
+                        borderRadius: BorderRadius.all(Radius.circular(25)),
                       ),
                       child: Column(
                         children: [
@@ -147,8 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Card(
-                      // elevation: 4,
-              
                       color: Colors.black,
                       child: additionalInformation(
                           "${homepageconter.data!.wind}",
@@ -156,7 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           "${homepageconter.data!.pressure}",
                           "${homepageconter.data!.feels_like}"),
                     ),
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               );
@@ -169,28 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-  ShowDialogBox() => showCupertinoDialog<String>(
-      context: context,
-      builder: (BuildContext context) => CupertinoAlertDialog(
-            title: Text('No connection'),
-            content: Text("Please check  your internet connectivity"),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () async {
-                  Navigator.pop(context, 'Cancel');
-                  setState(() => isAlertSet = false);
-                  isDeviceConnected =
-                      await InternetConnectionChecker().hasConnection;
-                  if (!isDeviceConnected) {
-                    ShowDialogBox();
-                    setState(() => isAlertSet = true);
-                  }
-                },
-                child: Text('ok'),
-              )
-            ],
-          ));
 }
 
 // https://api.openweathermap.org/data/2.5/weather?q=london&appid=e17d0b6f411cdb733836795ba61fe8ab

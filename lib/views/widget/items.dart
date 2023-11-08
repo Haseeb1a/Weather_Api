@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget additionalInformation(
     String wind, String humidity, String pressure, String feellike) {
-  final style = TextStyle(
+  final style =  const TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     color: Colors.yellow,
@@ -10,7 +10,7 @@ Widget additionalInformation(
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      gradient: LinearGradient(
+      gradient: const LinearGradient(
                           colors: [Color.fromARGB(255, 16, 59, 94), Color.fromARGB(255, 164, 192, 215)],
                         ),
     ),
