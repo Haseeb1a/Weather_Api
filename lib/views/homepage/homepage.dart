@@ -1,12 +1,4 @@
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/controller/connectivity_controler.dart';
@@ -28,6 +20,7 @@ class MyHomePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromARGB(255, 62, 86, 98),
       appBar: AppBar(
+        toolbarHeight: 65,
         elevation: 0,
         // backgroundColor: Colors.black,
         backgroundColor: Color.fromARGB(255, 74, 137, 166),
@@ -85,25 +78,22 @@ class MyHomePage extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(25)),
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              currentWeather(
-                                  // Icons.wb_sunny_rounded,
-                                  "${homepageconter.data!.temp}",
-                                  "${homepageconter.data!.cityName}"),
-                              const SizedBox(
-                                height: 40,
+                          currentWeather(
+                              // Icons.wb_sunny_rounded,
+                              "${homepageconter.data?.temp ?? 'N/A'}",
+                              "${homepageconter.data?.cityName  ?? 'N/A'}"
                               ),
-                              const Text(
-                                "Additional Information",
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Color.fromARGB(255, 252, 255, 73),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          const Text(
+                            "Additional Information",
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Color.fromARGB(255, 36, 81, 117),
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -111,10 +101,10 @@ class MyHomePage extends StatelessWidget {
                     Card(
                       color: Colors.black,
                       child: additionalInformation(
-                          "${homepageconter.data!.wind}",
-                          "${homepageconter.data!.humidity}",
-                          "${homepageconter.data!.pressure}",
-                          "${homepageconter.data!.feels_like}"),
+                          "${homepageconter.data?.wind ?? 'N/A'}",
+                          "${homepageconter.data?.humidity ?? 'N/A'}",
+                          "${homepageconter.data?.pressure ?? 'N/A'}",
+                          "${homepageconter.data?.feels_like ?? 'N/A'}"),
                     ),
                     SizedBox(
                       height: 20,

@@ -6,12 +6,12 @@ Widget currentWeather( String temp, String location) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: 10,),
+        const SizedBox(height: 10,),
 Container(
   width: 180, // Set the desired width for your container
   height: 180, // Set the desired height for your container
   child: ClipRRect(
-    borderRadius: BorderRadius.all(
+    borderRadius: const BorderRadius.all(
     Radius.circular(50)
     
     ),
@@ -21,10 +21,10 @@ Container(
     ),
   ),
 ),
-      SizedBox(height: 10.0,),
-      Text("$temp °C",style: TextStyle(fontSize: 46,color: Colors.white),),
-       SizedBox(height: 10.0,),
-      Text("$location",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),     
+      const SizedBox(height: 10.0,),
+      Text("$temp °C",style: const TextStyle(fontSize: 46,color: Colors.orange,fontWeight: FontWeight.bold),),
+       const SizedBox(height: 10.0,),
+      Text("$location",style: const TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),     
       ],
     ),
   );

@@ -2,20 +2,25 @@ import 'package:flutter/material.dart';
 
 Widget additionalInformation(
     String wind, String humidity, String pressure, String feellike) {
-  final style =  const TextStyle(
+  final style = const TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     color: Colors.yellow,
   );
   return Container(
+    
+    height: 135,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
       gradient: const LinearGradient(
-                          colors: [Color.fromARGB(255, 16, 59, 94), Color.fromARGB(255, 164, 192, 215)],
-                        ),
+        colors: [
+          Color.fromARGB(255, 16, 59, 94),
+          Color.fromARGB(255, 41, 124, 192)
+        ],
+      ),
     ),
     width: double.infinity,
-    padding: const EdgeInsets.all(20),
+    padding: const EdgeInsets.all(7),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,14 +42,14 @@ Widget additionalInformation(
                         Text(
                           " Wind",
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 17,
                     ),
                     Row(
                       children: [
@@ -55,7 +60,7 @@ Widget additionalInformation(
                         Text(
                           "  Pressure ",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 17,
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
                           ),
@@ -67,25 +72,21 @@ Widget additionalInformation(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "$wind",
-                    style: style
-                  ),
+                  Text("$wind  km/h", style: style),
                   const SizedBox(
-                    height: 18,
+                    height: 17,
                   ),
-                  Text(
-                    "$pressure",
-                    style:style
-                  ),
+                  Text("$pressure  hpa", style: style),
                 ],
               ),
               const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    
                     Row(
                       children: [
+                        
                         Icon(
                           Icons.cloudy_snowing,
                           color: Colors.white,
@@ -93,14 +94,14 @@ Widget additionalInformation(
                         Text(
                           " Humidity ",
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 17,
                     ),
                     Row(
                       children: [
@@ -111,7 +112,7 @@ Widget additionalInformation(
                         Text(
                           " Feels like ",
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
                         ),
@@ -122,17 +123,11 @@ Widget additionalInformation(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "$humidity",
-                    style: style
-                  ),
+                  Text("$humidity", style: style),
                   const SizedBox(
-                    height: 18,
+                    height: 17,
                   ),
-                  Text(
-                    "$feellike",
-                    style: style
-                  ),
+                  Text("$feellike", style: style),
                 ],
               ),
             ])

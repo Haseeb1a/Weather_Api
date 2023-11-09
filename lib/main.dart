@@ -15,8 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => Homepagecontroller(),),
-              ChangeNotifierProvider(
+        ChangeNotifierProvider(
+          create: (context) => Homepagecontroller(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => CheckconnectivityProvider(),
         )
       ],
@@ -26,7 +28,6 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
-            
           ),
           home: MyHomePage()),
     );
